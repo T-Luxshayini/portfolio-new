@@ -7,7 +7,7 @@ import Skills from './components/Skills';
 import Blogs from './components/Blogs';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-
+import Projects from './components/Projects';
 const App = () => {
   return (
     <div className="bg-gray-900 text-white">
@@ -20,6 +20,9 @@ const App = () => {
       </section>
       <section id="skills">
         <Skills />
+      </section>
+      <section id="projects">
+        <Projects />
       </section>
       <section id="blogs">
         <Blogs />

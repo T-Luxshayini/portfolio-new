@@ -73,7 +73,7 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              I'm <span className="text-cyan-500">Brian Clark</span>
+              I'm <span className="text-cyan-500">Luxshayini Thevapalan</span>
             </motion.h1>
 
             <motion.p
@@ -82,9 +82,7 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
             >
-              I use animation as a third dimension by which to simplify
-              experiences and guide through each interaction. I'm not adding
-              motion just to spruce things up but doing it in ways that matter.
+              A passionate full stack developer dedicated to creating seamless web applications and enhancing user experiences. Let's build something amazing together!
             </motion.p>
 
             <motion.div
