@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import image1 from '../../src/components/assets/images/1_0aVRHCof0Ut38-BGx9Vkyw.webp';
 import image2 from '../../src/components/assets/images/1_5iJjqJFCtxQ4pAvf8GHelQ.webp';
 import image3 from '../../src/components/assets/images/1_kWvnsRT6BLubM9eSO7dxOA.webp';
@@ -37,29 +38,58 @@ const Blogs = () => {
   return (
     <section
       id="blogs"
-      className="min-h-screen bg-gradient-to-br from-[#0B1121] via-[#1C2A4A] to-[#2C3E50] text-white py-12"
+      className="relative min-h-screen bg-gradient-to-br from-[#0B1121] via-[#1C2A4A] to-[#2C3E50] text-white py-12 overflow-hidden"
     >
-      <div className="container mx-auto px-6 md:px-12 lg:px-20">
+      {/* Animated Background */}
+      <motion.div
+        className="absolute inset-0 z-0"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.8 }}
+        transition={{ duration: 2 }}
+      >
+        {[...Array(25)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute bg-cyan-500 rounded-full opacity-10"
+            style={{
+              width: `${Math.random() * 40 + 10}px`,
+              height: `${Math.random() * 40 + 10}px`,
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+            }}
+            animate={{
+              y: [0, -30, 0],
+              opacity: [0.1, 0.3, 0.1],
+            }}
+            transition={{
+              duration: Math.random() * 6 + 4,
+              repeat: Infinity,
+              ease: 'easeInOut',
+            }}
+          />
+        ))}
+      </motion.div>
+
+      {/* Blogs Section */}
+      <div className="container mx-auto px-6 md:px-12 lg:px-20 relative z-10">
         <h2 className="text-4xl font-bold text-center mb-12">Blogs</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16">
           {blogs.map((blog, index) => (
             <div
               key={index}
               className="relative rounded-2xl overflow-hidden backdrop-blur-lg bg-white/10 shadow-lg transition-all duration-300 hover:shadow-xl"
-              style={{ padding: '15px' }} // Adding padding around the card
             >
               {/* Blog Image */}
-              <div className="relative mb-4">
+              <div className="p-4">
                 <img
                   src={blog.img}
                   alt={blog.title}
                   className="w-full h-60 object-cover rounded-xl transition-transform duration-300 hover:scale-105"
-                  style={{ marginBottom: '15px' }} // Gap below the image
                 />
               </div>
 
               {/* Content */}
-              <div className="p-4 bg-[#1E293B] rounded-xl">
+              <div className="p-4">
                 {/* Tags */}
                 <div className="flex space-x-2 mb-4 text-sm text-teal-300">
                   {blog.tags.map((tag, i) => (
