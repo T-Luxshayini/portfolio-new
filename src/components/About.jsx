@@ -1,5 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { CheckCircle, Download } from 'lucide-react';
+import image3 from '/home/uki-jaffna/Documents/Portfolio-Luxsha/portfolio/src/components/assets/images/5b4c3a631ff89819f0dea67ae9353551.jpg';
 
 const About = () => {
   return (
@@ -39,62 +41,87 @@ const About = () => {
 
       {/* Content */}
       <div className="container mx-auto relative z-10 grid grid-cols-1 md:grid-cols-2 items-center gap-8">
-        {/* Left Side - Image */}
-        <div className="flex justify-center">
-          <div className="relative">
-            <img
-              src="https://via.placeholder.com/250" // Replace with your image URL
-              alt="Luxshayini"
-              className="rounded-lg shadow-lg"
-            />
-            <div className="absolute -top-4 -right-4 bg-cyan-500 rounded-full p-3">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-8 w-8 text-white"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 12l2 2 4-4m-6 4l2-2m-2 0l2-2"
-                />
-              </svg>
+        {/* Left Side - Innovative Image Layout */}
+        <motion.div 
+          className="flex justify-center relative w-full h-[500px]"
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, type: "spring" }}
+        >
+          <div className="relative w-full h-full">
+            {/* Background Geometric Shape */}
+            <div className="absolute -inset-4 bg-gradient-to-br from-cyan-500/20 to-blue-500/20 transform -rotate-6 rounded-2xl"></div>
+            
+            {/* Main Image with Cutout Effect */}
+            <div className="absolute inset-0 z-10 overflow-hidden rounded-2xl">
+              <img
+                src={image3}
+                alt="Luxshayini"
+                className="absolute inset-0 w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
+              />
+              
+              {/* Geometric Overlay */}
+              <div className="absolute inset-0 border-8 border-white/20 rounded-2xl pointer-events-none"></div>
             </div>
+
+            {/* Verification Badge */}
+            <motion.div 
+              className="absolute top-4 right-4 bg-cyan-500 rounded-full p-3 z-30"
+              whileHover={{ rotate: 360 }}
+              transition={{ duration: 0.5 }}
+            >
+              <CheckCircle className="h-8 w-8 text-white" />
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Right Side - Text */}
-        <div>
-          <h2 className="text-3xl md:text-4xl font-bold mb-2">About Me</h2>
-          <h3 className="text-xl md:text-2xl text-cyan-400 font-semibold mb-6">
+        <motion.div
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, type: "spring" }}
+        >
+          <h2 className="text-3xl md:text-5xl font-bold mb-4">About Me</h2>
+          <h3 className="text-xl md:text-3xl text-cyan-400 font-semibold mb-6">
             A Passionate Developer Who Loves to Code
           </h3>
-          <p className="mb-6 leading-relaxed">
+          <p className="mb-8 text-lg leading-relaxed">
             Hi! I'm <strong>Luxshayini Thevapalan</strong>, a passionate coder with a deep interest in full-stack development. 
             I started my journey at J/Vadamaradchy Hindu Girls' College and now explore web technologies, crafting solutions 
             with React, MongoDB, and Express. From Sri Lanka, I'm on a mission to create meaningful, user-friendly software.
           </p>
-          <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-            <li>
-              <strong>Name:</strong> Luxshayini Thevapalan
-            </li>
-            <li>
-              <strong>Address:</strong> Jaffna, Sri Lanka
-            </li>
-            <li>
-              <strong>Education:</strong> Full Stack Development
-            </li>
-            <li>
-              <strong>Freelance:</strong> Available
-            </li>
-          </ul>
-          <button className="mt-6 px-6 py-2 bg-cyan-500 hover:bg-cyan-400 text-white rounded-lg shadow-md">
-            Download CV
-          </button>
-        </div>
+          {/* Boxed Information */}
+          {/* Boxed Information */}
+<div className="bg-gradient-to-br from-cyan-800/20 to-blue-900/10 border border-cyan-500/50 rounded-xl p-8 mb-8 shadow-xl w-full max-w-xl mx-auto text-left">
+  <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <li className="flex items-start md:items-center">
+      <span className="font-bold w-32 text-cyan-400">Name:</span>
+      <span className="text-lg">Luxshayini Thevapalan</span>
+    </li>
+    <li className="flex items-start md:items-center">
+      <span className="font-bold w-32 text-cyan-400">Address:</span>
+      <span className="text-lg">Jaffna, SriLanka</span>
+    </li>
+    <li className="flex items-start md:items-center">
+      <span className="font-bold w-32 text-cyan-400">Education:</span>
+      <span className="text-lg">Full Stack Development</span>
+    </li>
+    <li className="flex items-start md:items-center">
+      <span className="font-bold w-32 text-cyan-400">Freelance:</span>
+      <span className="text-lg">Available</span>
+    </li>
+  </ul>
+</div>
+
+          <motion.button 
+            className="flex items-center space-x-3 px-8 py-3 bg-cyan-500 hover:bg-cyan-400 text-white text-lg rounded-lg shadow-md"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Download className="w-6 h-6" />
+            <span>Download CV</span>
+          </motion.button>
+        </motion.div>
       </div>
     </section>
   );
