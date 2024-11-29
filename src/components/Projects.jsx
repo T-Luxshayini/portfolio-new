@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import image2 from "/home/uki-jaffna/Documents/Portfolio-Luxsha/portfolio/src/components/assets/images/app.png"
+import image2 from "../../src/components/assets/images/app.png"
 const Projects = () => {
   const projects = [
     {

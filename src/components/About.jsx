@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle, Download } from 'lucide-react';
-import image3 from '/home/uki-jaffna/Documents/Portfolio-Luxsha/portfolio/src/components/assets/images/5b4c3a631ff89819f0dea67ae9353551.jpg';
+import image3 from '../../src/components/assets/images/5b4c3a631ff89819f0dea67ae9353551.jpg';
 
 const About = () => {
   return (
