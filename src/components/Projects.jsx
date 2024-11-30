@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
-import image2 from "../../src/components/assets/images/app.png"
+import image2 from "../../src/components/assets/images/app.png";
+
 const Projects = () => {
   const projects = [
     {
@@ -29,7 +30,7 @@ const Projects = () => {
   return (
     <section
       id="projects"
-      className="relative min-h-screen bg-gradient-to-br from-[#0B1121] via-[#1C2A4A] to-[#2C3E50] text-white py-12 overflow-hidden"
+      className="relative min-h-screen bg-gradient-to-br from-[#0B1121] via-[#1C2A4A] to-[#2C3E50] text-white py-16 overflow-hidden"
     >
       {/* Background animation */}
       <motion.div
@@ -62,13 +63,29 @@ const Projects = () => {
       </motion.div>
 
       {/* Content */}
-      <div className="container mx-auto px-4 pt-20 pb-16 md:pt-32 md:pb-24 relative z-10">
-        <h2 className="text-3xl font-bold text-center">Projects</h2>
-        <div className="flex flex-wrap justify-center mt-8 gap-8">
+      <div className="container mx-auto px-4 pt-20 pb-20 md:pt-32 md:pb-32 relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12"
+        >
+          <h2 className="text-cyan-500 text-xl mb-2">My Projects</h2>
+          <h1 className="text-4xl font-bold text-white sm:text-5xl">What I've Built</h1>
+        </motion.div>
+
+        <motion.div
+          className="flex flex-wrap justify-center mt-8 gap-8"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+        >
           {projects.map((project, index) => (
-            <div
+            <motion.div
               key={index}
-              className="bg-[#1C2A4A] rounded-lg shadow-lg overflow-hidden transform transition-transform hover:scale-105 max-w-sm"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-[#1C2A4A] rounded-xl shadow-lg overflow-hidden transform transition-transform hover:shadow-2xl hover:shadow-cyan-500/50 max-w-sm"
             >
               {/* Project Image */}
               <img
@@ -79,7 +96,9 @@ const Projects = () => {
 
               {/* Project Content */}
               <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
+                <h3 className="text-xl font-semibold text-white mb-2">
+                  {project.title}
+                </h3>
                 <p className="text-gray-300 mb-4">{project.description}</p>
                 <a
                   href={project.link}
@@ -90,9 +109,9 @@ const Projects = () => {
                   View Project →
                 </a>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
 
       {/* Animated decorative elements */}

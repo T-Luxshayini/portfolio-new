@@ -87,7 +87,7 @@ const About = () => {
           </h3>
           <p className="mb-8 text-lg leading-relaxed">
             Hi! I'm <strong>Luxshayini Thevapalan</strong>, a passionate coder with a deep interest in full-stack development. 
-            I started my journey at J/Vadamaradchy Hindu Girls' College and now explore web technologies, crafting solutions 
+            I started my journey at UKi Coding School and now explore web technologies, crafting solutions 
             with React, MongoDB, and Express. From Sri Lanka, I'm on a mission to create meaningful, user-friendly software.
           </p>
           {/* Boxed Information */}
