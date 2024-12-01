@@ -1,11 +1,40 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
+  const formRef = useRef();
+  const [messageStatus, setMessageStatus] = useState('');
+
   const fadeIn = {
     initial: { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0 },
     transition: { duration: 0.6 }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // Replace with your EmailJS service and template IDs
+    const serviceId = 'service_feu4eic';
+    const templateId = 'template_ibemgox';
+    const publicKey = 'IVJKCR1xxKLEeg7m5';
+
+    emailjs
+      .sendForm(serviceId, templateId, formRef.current, publicKey)
+      .then(
+        (result) => {
+          console.log('Message Sent:', result.text);
+          setMessageStatus('Message sent successfully!');
+        },
+        (error) => {
+          console.error('Error:', error.text);
+          setMessageStatus('Failed to send message. Please try again.');
+        }
+      );
+
+    // Reset the form
+    e.target.reset();
   };
 
   return (
@@ -37,7 +66,7 @@ const Contact = () => {
               </div>
               <div>
                 <h3 className="text-xl font-semibold mb-1">Address</h3>
-                <p className="text-gray-300">Jaffna,Sri Lanka</p>
+                <p className="text-gray-300">Jaffna, Sri Lanka</p>
               </div>
             </div>
 
@@ -74,34 +103,35 @@ const Contact = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <form className="space-y-4">
+            <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <input
                   type="text"
+                  name="from_name"
                   placeholder="Your Name"
+                  required
                   className="w-full px-4 py-3 rounded-md bg-gray-700/50 border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition duration-300"
                 />
                 <input
                   type="email"
+                  name="user_email"
                   placeholder="Your Email"
+                  required
                   className="w-full px-4 py-3 rounded-md bg-gray-700/50 border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition duration-300"
                 />
               </div>
-              <div className="grid grid-cols-2 gap-4">
-                <input
-                  type="tel"
-                  placeholder="Your Phone"
-                  className="w-full px-4 py-3 rounded-md bg-gray-700/50 border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition duration-300"
-                />
-                <input
-                  type="text"
-                  placeholder="Subject"
-                  className="w-full px-4 py-3 rounded-md bg-gray-700/50 border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition duration-300"
-                />
-              </div>
+              <input
+                type="text"
+                name="subject"
+                placeholder="Subject"
+                required
+                className="w-full px-4 py-3 rounded-md bg-gray-700/50 border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition duration-300"
+              />
               <textarea
+                name="message"
                 placeholder="Write your message here"
                 rows="6"
+                required
                 className="w-full px-4 py-3 rounded-md bg-gray-700/50 border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition duration-300"
               ></textarea>
               <motion.button
@@ -117,48 +147,20 @@ const Contact = () => {
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                   </svg>
                 </motion.div>
               </motion.button>
             </form>
+            {messageStatus && (
+              <p className="mt-4 text-sm text-gray-400 text-center">{messageStatus}</p>
+            )}
           </motion.div>
         </div>
       </div>
-
-      {/* Animated background elements */}
-      <motion.div 
-        className="absolute inset-0 z-0"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 2 }}
-      >
-        {[...Array(20)].map((_, index) => (
-          <motion.div
-            key={index}
-            className="absolute bg-cyan-500 rounded-full opacity-10"
-            style={{
-              width: Math.random() * 40 + 10,
-              height: Math.random() * 40 + 10,
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              y: [0, -30, 0],
-              opacity: [0.1, 0.3, 0.1],
-            }}
-            transition={{
-              duration: Math.random() * 5 + 5,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          />
-        ))}
-      </motion.div>
     </div>
   );
 };
 
 export default Contact;
-
