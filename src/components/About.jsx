@@ -113,14 +113,27 @@ const About = () => {
   </ul>
 </div>
 
-          <motion.button 
+          {/* <motion.button 
+          href="/cv/CV-Luxshayini Thevapalan.pdf"
+          download
+
             className="flex items-center space-x-3 px-8 py-3 bg-cyan-500 hover:bg-cyan-400 text-white text-lg rounded-lg shadow-md"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             <Download className="w-6 h-6" />
             <span>Download CV</span>
-          </motion.button>
+          </motion.button> */}
+          <motion.a
+  href="/cv/CV-Luxshayini Thevapalan.pdf" // Path to your CV
+  download // Ensures the file is downloaded instead of opened
+  className="flex items-center space-x-3 px-8 py-3 bg-cyan-500 hover:bg-cyan-400 text-white text-lg rounded-lg shadow-md"
+  whileHover={{ scale: 1.05 }}
+  whileTap={{ scale: 0.95 }}
+>
+  <Download className="w-6 h-6" />
+  <span>Download CV</span>
+</motion.a>
         </motion.div>
       </div>
     </section>
